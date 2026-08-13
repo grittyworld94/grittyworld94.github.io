@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   },
   description:
     "Independent software studio based in South Korea. We create mobile apps and games for Android and iOS.",
+  verification: {
+    google: "chn_cCFhb1O2QbHey_6SOAlQNrcnhIQyHRKw707KAdE",
+  },
   openGraph: {
     title: "grittyworld",
     description:
