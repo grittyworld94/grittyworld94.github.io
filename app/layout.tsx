@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CONTACT_EMAIL, PRIVACY_POLICY_URL } from "./links";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -40,8 +41,14 @@ export default function RootLayout({
           <footer>
             <nav aria-label="Footer">
               <Link href="/">Home</Link>
-              <Link href="/privacy/">Privacy Policy</Link>
-              <a href="mailto:grittyworld.94@gmail.com">Contact</a>
+              <a
+                href={PRIVACY_POLICY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Privacy Policy
+              </a>
+              <a href={`mailto:${CONTACT_EMAIL}`}>Contact</a>
             </nav>
             <p>&copy; 2026 grittyworld. All rights reserved.</p>
           </footer>

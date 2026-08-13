@@ -1,24 +1,4 @@
-import Link from "next/link";
-
-const apps = [
-  {
-    name: "발품 (balpoom)",
-    status: "In development",
-    description:
-      "A record-keeping app for people visiting properties in person — capture photos, notes, and impressions on site, then compare them later.",
-  },
-  {
-    name: "Globepedia",
-    status: "Coming soon",
-    description:
-      "Explore the world on an interactive 3D globe and learn about every country along the way.",
-  },
-  {
-    name: "Signal",
-    status: "In development",
-    description: "An atmospheric narrative game built with Godot.",
-  },
-];
+import { CONTACT_EMAIL, PRIVACY_POLICY_URL } from "./links";
 
 export default function Home() {
   return (
@@ -32,28 +12,19 @@ export default function Home() {
         for users around the world.
       </p>
 
-      <h2>Apps</h2>
-
-      <ul className="apps">
-        {apps.map((app) => (
-          <li key={app.name}>
-            <span className="app-name">{app.name}</span>
-            <span className="badge">{app.status}</span>
-            <span className="app-desc">{app.description}</span>
-          </li>
-        ))}
-      </ul>
-
       <h2>Contact</h2>
 
       <p>
         <strong>Email:</strong>{" "}
-        <a href="mailto:grittyworld.94@gmail.com">grittyworld.94@gmail.com</a>
+        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
       </p>
 
       <p>
         For questions about how we handle your data, see our{" "}
-        <Link href="/privacy/">Privacy Policy</Link>.
+        <a href={PRIVACY_POLICY_URL} target="_blank" rel="noopener noreferrer">
+          Privacy Policy
+        </a>
+        .
       </p>
     </>
   );

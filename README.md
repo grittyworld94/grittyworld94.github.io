@@ -7,7 +7,7 @@ Live: https://grittyworld94.github.io/
 ## Stack
 
 - Next.js 16 (App Router, `output: 'export'` — fully static)
-- MDX for policy pages
+- MDX enabled for future prose pages
 - Plain CSS (`app/globals.css`), no UI framework
 
 ## Development
@@ -18,21 +18,27 @@ pnpm dev      # http://localhost:3000
 pnpm build    # static output -> out/
 ```
 
-## Adding a privacy policy for a new app
+## Links
+
+External URLs live in `app/links.ts`. The privacy policy currently points to a
+Notion page; update `PRIVACY_POLICY_URL` there to change it everywhere.
+
+## Adding a privacy policy in-repo
+
+When policies should be versioned here instead of Notion:
 
 1. Create `app/privacy/<app-slug>/page.mdx`
-2. Copy the structure from an existing policy (e.g. `app/privacy/globepedia/page.mdx`)
-3. Add a link to it in `app/privacy/page.mdx`
-4. Add the app to the `apps` array in `app/page.tsx`
+2. Add a wrapper at `app/privacy/layout.tsx` for prose styling
+3. Point `PRIVACY_POLICY_URL` (or per-app links) at `/privacy/<app-slug>/`
 
 The route is generated automatically from the folder name — no config needed.
-
-Store submission URLs:
-
-- Privacy Policy: `https://grittyworld94.github.io/privacy/<app-slug>/`
-- Support: `https://grittyworld94.github.io/`
+`app/globals.css` already carries the styles for policy pages (`.backlink`,
+`.updated`, tables) and for the app list (`.apps`, `.badge`).
 
 ## Deployment
 
 Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and
 publishes to GitHub Pages.
+
+Note: GitHub Pages must stay on `build_type: workflow`. If it reverts to
+`legacy`, Jekyll will render this README as the homepage.
