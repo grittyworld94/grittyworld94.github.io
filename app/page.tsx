@@ -1,4 +1,5 @@
-import { CONTACT_EMAIL, PRIVACY_POLICY_URL } from "./links";
+import Link from "next/link";
+import { CONTACT_EMAIL } from "./links";
 
 export default function Home() {
   return (
@@ -21,10 +22,7 @@ export default function Home() {
 
       <p>
         For questions about how we handle your data, see our{" "}
-        <a href={PRIVACY_POLICY_URL} target="_blank" rel="noopener noreferrer">
-          Privacy Policy
-        </a>
-        .
+        <Link href="/privacy/">Privacy Policy</Link>.
       </p>
     </>
   );

@@ -18,22 +18,30 @@ pnpm dev      # http://localhost:3000
 pnpm build    # static output -> out/
 ```
 
-## Links
+## Adding an app's privacy policy
 
-External URLs live in `app/links.ts`. The privacy policy currently points to a
-Notion page; update `PRIVACY_POLICY_URL` there to change it everywhere.
+`/privacy/` lists every app and links to its policy. The list is driven by
+`PRIVACY_POLICIES` in `app/links.ts` — append one row and the page picks it up.
 
-## Adding a privacy policy in-repo
+**Policy hosted externally (Notion, etc.):**
 
-When policies should be versioned here instead of Notion:
+```ts
+{ name: "발품 (balpoom)", href: "https://...", external: true }
+```
 
-1. Create `app/privacy/<app-slug>/page.mdx`
-2. Add a wrapper at `app/privacy/layout.tsx` for prose styling
-3. Point `PRIVACY_POLICY_URL` (or per-app links) at `/privacy/<app-slug>/`
+**Policy hosted in this repo:**
 
-The route is generated automatically from the folder name — no config needed.
-`app/globals.css` already carries the styles for policy pages (`.backlink`,
-`.updated`, tables) and for the app list (`.apps`, `.badge`).
+1. Create `app/privacy/<app-slug>/page.mdx` (MDX is enabled; the route comes
+   from the folder name, no config needed)
+2. Add the row without `external`:
+
+```ts
+{ name: "발품 (balpoom)", href: "/privacy/balpoom/" }
+```
+
+`app/privacy/layout.tsx` wraps every policy page with the back-link and prose
+styling. `app/globals.css` already carries styles for policy pages
+(`.backlink`, `.updated`, tables) and for the app list (`.apps`, `.badge`).
 
 ## Deployment
 

@@ -186,6 +186,35 @@ a:focus-visible {
   color: var(--text-muted);
 }
 
+/* Policy list rows — the whole row is the click target */
+
+.apps li:has(.policy-link) {
+  padding: 0;
+}
+
+.policy-link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 1.15rem 0;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.policy-link:hover {
+  color: #fff;
+}
+
+.policy-link .ext {
+  font-size: 0.85em;
+  color: var(--text-dim);
+}
+
+.policy-link:hover .ext {
+  color: var(--text-muted);
+}
+
 /* ---------- Policy pages ---------- */
 
 .backlink {
