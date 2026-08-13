@@ -19,7 +19,7 @@ export type PrivacyPolicy = {
 export const PRIVACY_POLICIES: PrivacyPolicy[] = [
   {
     name: "Globepedia",
-    href: "https://app.notion.com/p/34ed5a76164d80eeb957e390dadf9a84",
+    href: "https://hungry-ship-7a4.notion.site/34ed5a76164d80eeb957e390dadf9a84",
     external: true,
   },
 ];
