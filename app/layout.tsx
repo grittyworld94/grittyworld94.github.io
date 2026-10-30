@@ -44,7 +44,7 @@ export default function RootLayout({
           <footer>
             <nav aria-label="Footer">
               <Link href="/">Home</Link>
-              <Link href="/privacy/">Privacy Policy</Link>
+              <Link href="/#apps">Apps</Link>
               <a href={`mailto:${CONTACT_EMAIL}`}>Contact</a>
             </nav>
             <p>&copy; 2026 grittyworld. All rights reserved.</p>

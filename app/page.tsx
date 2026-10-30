@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { CONTACT_EMAIL } from "./links";
+
+import { APPS, CONTACT_EMAIL } from "@/app/links";
 
 export default function Home() {
   return (
@@ -13,6 +14,21 @@ export default function Home() {
         for users around the world.
       </p>
 
+      <h2 id="apps">Apps</h2>
+
+      <ul className="apps">
+        {APPS.map((app) => (
+          <li key={app.href} lang="ko">
+            <Link className="app-name" href={app.href}>
+              {app.name}
+            </Link>
+            <span className="badge">{app.releaseLabel}</span>
+            <span className="app-desc">{app.summary}</span>
+            <span className="app-platforms">iOS · Android</span>
+          </li>
+        ))}
+      </ul>
+
       <h2>Contact</h2>
 
       <p>
@@ -21,8 +37,7 @@ export default function Home() {
       </p>
 
       <p>
-        For questions about how we handle your data, see our{" "}
-        <Link href="/privacy/">Privacy Policy</Link>.
+        App-specific privacy policies and terms are linked from each app page.
       </p>
     </>
   );

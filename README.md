@@ -18,30 +18,38 @@ pnpm dev      # http://localhost:3000
 pnpm build    # static output -> out/
 ```
 
-## Adding an app's privacy policy
+## App introductions and legal links
 
-`/privacy/` lists every app and links to its policy. The list is driven by
-`PRIVACY_POLICIES` in `app/links.ts` — append one row and the page picks it up.
+The home page lists published apps using `APPS` in `app/links.ts`.
+Each app has its own introduction page under `/apps/<slug>/`, with key features,
+download information, and an **이용 안내와 문의** section containing that app's
+privacy policy and terms links. Global navigation links to the app list.
 
-**Policy hosted externally (Notion, etc.):**
+- Globepedia: `/apps/globepedia/` — App Store and Google Play downloads,
+  with its existing privacy policy. No separate terms URL was found in the
+  app's settings or release documentation. Add a terms link here when an
+  approved document is available.
 
-```ts
-{ name: "발품 (balpoom)", href: "https://...", external: true }
-```
+Existing Notion document URLs are unchanged. `/privacy/` remains available for
+old links and directs visitors to each app's support section. It is not a
+company-wide policy or a shared set of terms for all apps.
 
-**Policy hosted in this repo:**
+To add an app, define its information in `app/links.ts`, include it in `APPS`,
+and create its introduction page. The home page, sitemap, and legacy privacy
+index then pick up the app automatically. The legal links live on the app page.
 
-1. Create `app/privacy/<app-slug>/page.mdx` (MDX is enabled; the route comes
-   from the folder name, no config needed)
-2. Add the row without `external`:
+App screenshots are managed in the stores only; the website does not duplicate
+them. Both Globepedia public store links were opened and verified on 2026-10-30.
 
-```ts
-{ name: "발품 (balpoom)", href: "/privacy/balpoom/" }
-```
+## Unpublished apps
 
-`app/privacy/layout.tsx` wraps every policy page with the back-link and prose
-styling. `app/globals.css` already carries styles for policy pages
-(`.backlink`, `.updated`, tables) and for the app list (`.apps`, `.badge`).
+Keep unpublished app drafts outside this public repository. Do not add their
+routes under `app/` or include their metadata in `APPS` until publication is
+approved. Hiding only the home-page link does not prevent direct URL access.
+
+At launch, restore the approved introduction page, set the release label and
+real store URLs, and register the app in `APPS`. Check that advertised features
+are available before publishing. App screenshots remain managed in the stores.
 
 ## Deployment
 

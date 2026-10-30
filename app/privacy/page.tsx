@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CONTACT_EMAIL, PRIVACY_POLICIES } from "../links";
+
+import { APPS, CONTACT_EMAIL } from "@/app/links";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy policies for apps published by grittyworld.",
+  description: "Find privacy policies and terms on each grittyworld app page.",
 };
 
 export default function PrivacyIndex() {
@@ -13,34 +14,18 @@ export default function PrivacyIndex() {
       <h1>Privacy Policy</h1>
 
       <p>
-        Each grittyworld app has its own privacy policy describing what that app
-        collects and how it is used. Select an app to read its policy.
+        Each app has its own privacy policy and, where provided, terms of
+        service. Select an app to find its policy links and support information.
       </p>
 
       <ul className="apps">
-        {PRIVACY_POLICIES.map((policy) =>
-          policy.external ? (
-            <li key={policy.name}>
-              <a
-                className="policy-link"
-                href={policy.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {policy.name}
-                <span className="ext" aria-hidden="true">
-                  &#8599;
-                </span>
-              </a>
-            </li>
-          ) : (
-            <li key={policy.name}>
-              <Link className="policy-link" href={policy.href}>
-                {policy.name}
-              </Link>
-            </li>
-          ),
-        )}
+        {APPS.map((app) => (
+          <li key={app.href} lang="ko">
+            <Link className="policy-link" href={`${app.href}#support-title`}>
+              {app.name}
+            </Link>
+          </li>
+        ))}
       </ul>
 
       <h2>Contact</h2>
